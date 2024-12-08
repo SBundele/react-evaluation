@@ -1,12 +1,19 @@
 import React, { useContext } from "react";
 import { useState, useEffect } from "react";
 import { CountryName } from "../../App";
-import { Navigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function Home() {
   const [countries, setCountries] = useState([]);
   const [loading, setLoading] = useState(false);
   const { setName } = useContext(CountryName);
+  const navigate = useNavigate()
+
+  const handleClick = (country_name) => {
+    setName(country_name);
+    console.log("clicked");
+    navigate("/name");
+  };
 
   const fetchCountries = async () => {
     setLoading(true);
@@ -23,6 +30,7 @@ function Home() {
       setCountries(["Some Error Occurred"]);
     }
   };
+
 
   useEffect(() => {
     fetchCountries();
@@ -53,15 +61,7 @@ function Home() {
                 </ul>
               </div>
               <div className="card-footer">
-                <button
-                  onClick={() => {
-                    setName(country.name.common);
-                    console.log("clicked");
-                    <Navigate to="/name" />
-                  }}
-                >
-                  More Details
-                </button>
+                <button onClick={() => handleClick(country.name.common)}>More Details</button>
               </div>
             </div>
           );

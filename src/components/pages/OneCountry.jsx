@@ -1,11 +1,20 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { CountryName } from '../../App'
 
 function OneCountry() {
   const [country, setCountry] = useState([])
   const {name} = useContext(CountryName)
+
+  const fetchCountry = async () => {
+    let response = await fetch(`https://restcountries.com/v3.1/name/${name}`);
+    let res = await response.json()
+    console.log(res)
+    setCountry(res)
+  }
   
-  console.log(name)
+  useEffect(() => {
+    fetchCountry()
+  }, [name])
 
   return (
     <section className="one-country">
