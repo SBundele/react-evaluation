@@ -9,14 +9,13 @@ function Home() {
     setLoading(true);
     try {
       let response = await fetch("https://restcountries.com/v3.1/all");
-      if (response.ok) {
-        let res = await response.json();
-        console.log(res);
-        setCountries(res);
-        setLoading(false);
-      }
+
+      let res = await response.json();
+      console.log(res);
+      setCountries(res);
+      setLoading(false);
     } catch (e) {
-      console.log(error);
+      console.log(e);
       setLoading(false);
       setCountries(["Some Error Occurred"]);
     }
