@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useState, useEffect } from "react";
+import { CountryName } from "../../App";
+import { Navigate } from "react-router-dom";
 
 function Home() {
   const [countries, setCountries] = useState([]);
   const [loading, setLoading] = useState(false);
+  const { setName } = useContext(CountryName);
 
   const fetchCountries = async () => {
     setLoading(true);
@@ -50,7 +53,15 @@ function Home() {
                 </ul>
               </div>
               <div className="card-footer">
-                <button>More Details</button>
+                <button
+                  onClick={() => {
+                    setName(country.name.common);
+                    console.log("clicked");
+                    <Navigate to="/name" />
+                  }}
+                >
+                  More Details
+                </button>
               </div>
             </div>
           );
