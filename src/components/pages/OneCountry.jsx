@@ -18,7 +18,7 @@ function OneCountry() {
 
   return (
     <section className="one-country">
-      <div className="country-container">
+      <div className="country-container one-country-container">
         {country.map((item) => (
           <div className="card" key={item.name.common}>
             <div className="card-img">
@@ -36,10 +36,25 @@ function OneCountry() {
                 <li>
                   <strong>Capital:</strong> {item.capital}
                 </li>
+                <li>
+                  <strong>Native Name:</strong> {item.subregion}
+                </li>
+                <li>
+                  <strong>Currency Name:</strong>{" "}
+                  {JSON.stringify(item.currencies)}
+                </li>
+                <li>
+                  <strong>Language Name:</strong>{" "}
+                  {JSON.stringify(item.languages)}
+                </li>
+                <li>
+                  <strong>Language Name:</strong>{" "}
+                  {JSON.stringify(item.languages)}
+                </li>
+                <li>
+                  <strong>Border Name:</strong> {JSON.stringify(item.borders)}
+                </li>
               </ul>
-            </div>
-            <div className="card-footer">
-              <button>More Details</button>
             </div>
           </div>
         ))}

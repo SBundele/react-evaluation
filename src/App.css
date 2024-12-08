@@ -58,14 +58,32 @@
     font-size: 17px;
 }
 
+/* One Country */
+.one-country{
+    margin: 20px auto;
+}
+.one-country-container > .card{
+    width: 40%;
+}
+.one-country-container > .card > .card-img{
+    width: 100%;
+    height: auto;
+}
+
 @media screen and (max-width: 991px) {
     .card{
         width: 40%;
+    }
+    .one-country-container > .card{
+        width: 65%;
     }
 }
 
 @media screen and (max-width: 777px) {
     .card {
         width: 100%;
+    }
+    .one-country-container > .card{
+        width: 80%;
     }
 }
